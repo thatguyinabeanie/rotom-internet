@@ -8,6 +8,15 @@
             "name": "postgres",
             "username": "pgsql_user",
             "database": "db"
+        },
+        {
+            "previewLimit": 50,
+            "server": "rotom-internet-db-1",
+            "port": 5432,
+            "driver": "PostgreSQL",
+            "name": "postgres",
+            "username": "pgsql_user",
+            "database": "db"
         }
     ]
 }
