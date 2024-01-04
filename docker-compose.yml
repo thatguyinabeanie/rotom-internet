@@ -3,7 +3,7 @@ version: '3.8'
 services:
   web:
     extends:
-      file: ./docker/common-services.yml
+      file: ./common-services.yml
       service: web
     env_file:
       - ./.env
@@ -11,13 +11,13 @@ services:
       - db
   db:
     extends:
-        file: ./docker/common-services.yml
+        file: ./common-services.yml
         service: db
     env_file:
       - ./.env
   nginx:
     extends:
-      file: ./docker/common-services.yml
+      file: ./common-services.yml
       service: nginx
     depends_on:
       - web
