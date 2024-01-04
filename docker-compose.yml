@@ -2,32 +2,23 @@ version: '3.8'
 
 services:
   web:
-    build:
-      context: ./app
-      dockerfile: Dockerfile.prod
-    command: gunicorn web.wsgi:application --bind 0.0.0.0:8000
-    volumes:
-      - static_volume:/home/app/web/staticfiles
-      - media_volume:/home/app/web/mediafiles
-    expose:
-      - 8000
+    extends:
+      file: ./common-services.yml
+      service: web
     env_file:
       - ./.env
     depends_on:
       - db
   db:
-    image: postgres:15
-    volumes:
-      - postgres_data:/var/lib/postgresql/data/
+    extends:
+        file: ./common-services.yml
+        service: db
     env_file:
       - ./.env
   nginx:
-    build: ./nginx
-    volumes:
-      - static_volume:/home/app/web/staticfiles
-      - media_volume:/home/app/web/mediafiles
-    ports:
-      - 1337:80
+    extends:
+      file: ./common-services.yml
+      service: nginx
     depends_on:
       - web
 
