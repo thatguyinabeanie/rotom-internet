@@ -9,18 +9,22 @@ services:
       - ./.env
     depends_on:
       - db
+
   db:
     extends:
         file: ./common-services.yml
         service: db
     env_file:
       - ./.env
+
   nginx:
     extends:
       file: ./common-services.yml
       service: nginx
     depends_on:
       - web
+
+
 
 volumes:
   postgres_data:
